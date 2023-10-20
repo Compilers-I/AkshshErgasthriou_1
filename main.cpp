@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+using namespace std;
+
 extern int yylex(FILE* fpointer, union semantic_info* sem);
 
 extern union semantic_info {
@@ -10,14 +12,18 @@ extern union semantic_info {
 	int i;
 } SEMANTIC_INFO;
 
+void error(const char *message) {
+	cout << endl << " :> Error : " << message << endl << endl;
+}
+
 // main of program
 void main() {
 	FILE *fp = NULL;
 	// Return values come here
 	union semantic_info sem;
 
-	// Open file
-	fopen_s(&fp, "data.txt", "r");
+	// Open file and check for validation
+	if ( (fopen_s(&fp, "C:/University/Compilers I/Askhsh_Ergasthriou_1/data.txt", "r")) ) { error("Opening of file"); exit(1); }
 
 	int tokentype = 0;
 
