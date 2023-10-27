@@ -29,13 +29,13 @@ void showStats() {
 }
 
 // main of program
-void main() {
+void main(int argc , char *argv[]) {
 	FILE *fp = NULL;
 	// Return values come here
 	union semantic_info sem;
 
 	// Open file and check for validation
-	if ( (fopen_s(&fp, "C:/University/Compilers I/Askhsh_Ergasthriou_1/data.txt", "r")) ) { error("Opening of file"); exit(1); }
+	if ( (fopen_s(&fp, argv[1], "r"))) { error("Opening of file"); exit(1); }
 
 	int tokentype = 0;
 
